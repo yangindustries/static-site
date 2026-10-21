@@ -1,30 +1,424 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>yangindustries.link</title>
-  <meta name="description" content="Yang Industries — software developers and hardware manufacturers" />
-  <style>
-    body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial; display:flex; align-items:center; justify-content:center; min-height:100vh; margin:0; background:#f6f8fb; color:#111; }
-    main { text-align:center; max-width:720px; padding:2rem; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yang Industries | Hardware & Software Innovation</title>
+    <meta name="description" content="Yang Industries - Pioneer in end-to-end hardware engineering, embedded systems, and next-generation software solutions.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            500: '#0284c7',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            900: '#0c4a6e',
+                            glow: '#38bdf8'
+                        },
+                        darkbg: '#090d16',
+                        darkcard: '#111827',
+                        darkborder: '#1f2937'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #090d16;
+            color: #f3f4f6;
+        }
+        .bg-grid-pattern {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        }
+        .glow-effect {
+            box-shadow: 0 0 40px -10px rgba(56, 189, 248, 0.15);
+        }
+    </style>
 </head>
-<body>
-  <main>
-    <h1>Welcome to yangindustries.link</h1>
-    <p>We're dedicated to provide the best solutions.</p>
+<body class="bg-darkbg text-gray-200 antialiased selection:bg-brand-500 selection:text-white relative min-h-screen flex flex-col justify-between overflow-x-hidden">
 
-    <section id="about">
-      <h2>About Yang Industries</h2>
-      <p>
-        Yang Industries is a multidisciplinary technology company that designs and builds both software and hardware.
-        We develop robust, scalable software systems and engineer custom hardware solutions to meet demanding
-        performance, reliability, and integration requirements. Our team handles the full lifecycle from concept
-        and embedded design through software development, testing, and deployment.
-      </p>
-    </section>
+    <div class="fixed inset-0 bg-grid-pattern pointer-events-none z-0"></div>
+    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-brand-500/10 blur-[120px] rounded-full pointer-events-none z-0"></div>
 
-  </main>
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-darkbg/80 border-b border-gray-800/80 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center space-x-3 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500 to-indigo-600 flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-brand-500/20 group-hover:scale-105 transition-transform">
+                    YI
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-xl font-bold tracking-tight text-white group-hover:text-brand-glow transition-colors">Yang Industries</span>
+                    <span class="text-[10px] text-gray-400 tracking-widest uppercase font-medium">Technology & Solutions</span>
+                </div>
+            </a>
+
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-300">
+                <a href="#about" class="hover:text-white transition-colors">About</a>
+                <a href="#capabilities" class="hover:text-white transition-colors">Capabilities</a>
+                <a href="#showcase" class="hover:text-white transition-colors">Projects</a>
+                <a href="#compliance" class="hover:text-white transition-colors">Governance</a>
+                <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+            </nav>
+
+            <div class="hidden md:flex items-center">
+                <a href="#contact" class="inline-flex items-center space-x-2 bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 text-white text-sm font-semibold px-4 py-2.5 rounded-lg shadow-lg shadow-brand-500/10 transition-all hover:shadow-brand-500/25">
+                    <span>Inquire</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+
+            <button id="menu-btn" class="md:hidden text-gray-300 hover:text-white focus:outline-none" aria-label="Toggle Navigation">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-darkcard border-b border-gray-800 px-4 pt-2 pb-6 space-y-3">
+            <a href="#about" class="block text-gray-300 hover:text-white py-2 font-medium">About</a>
+            <a href="#capabilities" class="block text-gray-300 hover:text-white py-2 font-medium">Capabilities</a>
+            <a href="#showcase" class="block text-gray-300 hover:text-white py-2 font-medium">Projects</a>
+            <a href="#compliance" class="block text-gray-300 hover:text-white py-2 font-medium">Governance</a>
+            <a href="#contact" class="block text-gray-300 hover:text-white py-2 font-medium">Contact</a>
+        </div>
+    </header>
+
+    <main class="relative z-10 flex-grow">
+        <section id="about" class="pt-20 pb-24 md:pt-28 md:pb-32 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+                <div class="md:col-span-7 space-y-6">
+                    <div class="inline-flex items-center space-x-2 bg-brand-500/10 border border-brand-500/30 text-brand-glow px-3 py-1.5 rounded-full text-xs font-semibold tracking-wide uppercase">
+                        <span class="w-2 h-2 rounded-full bg-brand-glow animate-pulse"></span>
+                        <span>Official Entity Portal</span>
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
+                        Pioneering Modern <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-glow via-sky-300 to-indigo-400">Hardware & Software</span> Engineering
+                    </h1>
+                    <p class="text-lg text-gray-300 leading-relaxed max-w-2xl">
+                        Yang Industries designs, builds, and maintains integrated technology platforms spanning firmware, iOS/macOS applications, cloud infrastructure, and custom hardware systems.
+                    </p>
+                    <div class="pt-4 flex flex-col sm:flex-row items-center space-y-3 sm:space-y-0 sm:space-x-4">
+                        <a href="#showcase" class="w-full sm:w-auto inline-flex justify-center items-center space-x-2 bg-brand-600 hover:bg-brand-500 text-white font-semibold px-6 py-3.5 rounded-xl shadow-lg shadow-brand-500/20 transition-all">
+                            <span>Explore Operations</span>
+                            <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                        </a>
+                        <a href="#contact" class="w-full sm:w-auto inline-flex justify-center items-center space-x-2 bg-darkcard hover:bg-gray-800 text-gray-200 border border-gray-700 font-semibold px-6 py-3.5 rounded-xl transition-all">
+                            <span>Contact Engineering</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="md:col-span-5">
+                    <div class="bg-darkcard/90 border border-gray-800 rounded-2xl p-6 md:p-8 glow-effect backdrop-blur-sm relative">
+                        <div class="absolute -top-3 right-6 bg-brand-600 text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+                            Verified Legal Entity
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-4 flex items-center space-x-2">
+                            <i data-lucide="building-2" class="w-5 h-5 text-brand-glow"></i>
+                            <span>Corporate Overview</span>
+                        </h3>
+                        <dl class="space-y-4 text-sm divide-y divide-gray-800/80">
+                            <div class="pt-2 flex justify-between">
+                                <dt class="text-gray-400">Organization Name</dt>
+                                <dd class="font-semibold text-white text-right">Yang Industries</dd>
+                            </div>
+                            <div class="pt-3 flex justify-between">
+                                <dt class="text-gray-400">Domain Authority</dt>
+                                <dd class="font-mono text-brand-glow text-right">yangindustries.link</dd>
+                            </div>
+                            <div class="pt-3 flex justify-between">
+                                <dt class="text-gray-400">Core Focus</dt>
+                                <dd class="text-gray-200 text-right">App Dev, Embedded & Systems</dd>
+                            </div>
+                            <div class="pt-3 flex justify-between">
+                                <dt class="text-gray-400">Primary Contact</dt>
+                                <dd class="font-mono text-gray-200 text-right">haokai.yang@yangindustries.link</dd>
+                            </div>
+                        </dl>
+                        <div class="mt-6 pt-4 border-t border-gray-800/80 flex items-center justify-between text-xs text-gray-400">
+                            <span class="flex items-center space-x-1.5">
+                                <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                                <span>Systems Operational</span>
+                            </span>
+                            <span>HQ Domain Validated</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="capabilities" class="py-20 bg-gray-900/40 border-y border-gray-800/80">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-xs font-semibold text-brand-glow uppercase tracking-widest mb-2">End-to-End Execution</h2>
+                    <p class="text-3xl font-extrabold text-white sm:text-4xl">Complete Hardware & Software Lifecycle</p>
+                    <p class="mt-4 text-gray-400 text-base">From hardware prototyping to App Store software distribution, we maintain control over every step of the engineering pipeline.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-darkcard border border-gray-800 rounded-2xl p-8 hover:border-brand-500/50 transition-all group">
+                        <div class="w-12 h-12 rounded-xl bg-brand-500/10 border border-brand-500/20 flex items-center justify-center text-brand-glow mb-6 group-hover:scale-110 transition-transform">
+                            <i data-lucide="cpu" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">1. Hardware & Embedded Design</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Custom circuit architecture, IoT board design, microcontrollers, and low-level firmware development optimized for performance and efficiency.
+                        </p>
+                    </div>
+
+                    <div class="bg-darkcard border border-gray-800 rounded-2xl p-8 hover:border-brand-500/50 transition-all group">
+                        <div class="w-12 h-12 rounded-xl bg-brand-500/10 border border-brand-500/20 flex items-center justify-center text-brand-glow mb-6 group-hover:scale-110 transition-transform">
+                            <i data-lucide="smartphone" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">2. Apple Platform Development</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Native iOS, iPadOS, and macOS software applications engineered with Swift, Metal, and CoreBluetooth for seamless physical-to-digital integration.
+                        </p>
+                    </div>
+
+                    <div class="bg-darkcard border border-gray-800 rounded-2xl p-8 hover:border-brand-500/50 transition-all group">
+                        <div class="w-12 h-12 rounded-xl bg-brand-500/10 border border-brand-500/20 flex items-center justify-center text-brand-glow mb-6 group-hover:scale-110 transition-transform">
+                            <i data-lucide="cloud-cog" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">3. Cloud & Infrastructure</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Secure API endpoints, real-time telemetry processing, and continuous delivery deployment pipelines driving scalable application ecosystems.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="showcase" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <h2 class="text-xs font-semibold text-brand-glow uppercase tracking-widest mb-2">Active Engineering</h2>
+                    <p class="text-3xl font-extrabold text-white">Project Showcase</p>
+                </div>
+                <p class="text-gray-400 text-sm mt-2 md:mt-0 max-w-md">Software applications and hardware prototypes currently under active development and production by Yang Industries.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-darkcard border border-gray-800 rounded-2xl p-6 sm:p-8 flex flex-col justify-between hover:border-gray-700 transition-all">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-brand-500/10 text-brand-glow border border-brand-500/20">
+                                iOS / macOS Application
+                            </span>
+                            <span class="text-xs text-gray-500 font-mono">Status: In Development</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Telemetry & Control Suite</h3>
+                        <p class="text-gray-400 text-sm mb-6 leading-relaxed">
+                            A companion Apple application engineered for real-time device diagnostics, custom firmware flashing over BLE, and performance monitoring.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-800/80 flex items-center justify-between text-xs text-gray-400">
+                        <span>SwiftUI • CoreBluetooth</span>
+                        <span class="text-gray-300 font-medium flex items-center space-x-1">
+                            <span>Apple Platform Native</span>
+                            <i data-lucide="check-circle" class="w-3.5 h-3.5 text-brand-glow"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="bg-darkcard border border-gray-800 rounded-2xl p-6 sm:p-8 flex flex-col justify-between hover:border-gray-700 transition-all">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-purple-500/10 text-purple-400 border border-purple-500/20">
+                                Embedded Platform
+                            </span>
+                            <span class="text-xs text-gray-500 font-mono">Status: Active Testing</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Custom Hardware Hub</h3>
+                        <p class="text-gray-400 text-sm mb-6 leading-relaxed">
+                            Low-power microcontroller hardware boards engineered for sensory data collection, encrypted edge storage, and automated cloud sync.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-800/80 flex items-center justify-between text-xs text-gray-400">
+                        <span>C/C++ • Microcontrollers</span>
+                        <span class="text-gray-300 font-medium flex items-center space-x-1">
+                            <span>Hardware Hardware Stack</span>
+                            <i data-lucide="check-circle" class="w-3.5 h-3.5 text-brand-glow"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="compliance" class="py-16 bg-gradient-to-r from-gray-900 via-darkcard to-gray-900 border-y border-gray-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-8">
+                <div class="space-y-2 text-center md:text-left">
+                    <h3 class="text-xl font-bold text-white flex items-center justify-center md:justify-start space-x-2">
+                        <i data-lucide="shield-check" class="w-5 h-5 text-brand-glow"></i>
+                        <span>Corporate Compliance & Standards</span>
+                    </h3>
+                    <p class="text-gray-400 text-sm max-w-xl">
+                        Yang Industries strictly adheres to Apple Developer Program policies, commercial distribution standards, and global user privacy frameworks.
+                    </p>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="#privacy" onclick="showModal('privacy-modal')" class="text-xs text-gray-300 bg-gray-800 hover:bg-gray-700 px-4 py-2.5 rounded-lg border border-gray-700 transition-colors">Privacy Policy</a>
+                    <a href="#terms" onclick="showModal('terms-modal')" class="text-xs text-gray-300 bg-gray-800 hover:bg-gray-700 px-4 py-2.5 rounded-lg border border-gray-700 transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-darkcard border border-gray-800 rounded-3xl p-8 sm:p-12 glow-effect relative overflow-hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    <div class="lg:col-span-6 space-y-6">
+                        <span class="text-xs font-semibold text-brand-glow uppercase tracking-widest">Get In Touch</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Contact Yang Industries</h2>
+                        <p class="text-gray-300 text-sm leading-relaxed">
+                            For business inquiries, platform partnerships, developer relations, or official support regarding software distribution, reach out directly through our verified domain channel.
+                        </p>
+
+                        <div class="space-y-4 pt-2">
+                            <div class="flex items-center space-x-4 p-4 rounded-xl bg-gray-900/60 border border-gray-800">
+                                <div class="w-10 h-10 rounded-lg bg-brand-500/10 flex items-center justify-center text-brand-glow">
+                                    <i data-lucide="mail" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <div class="text-xs text-gray-400">Official Domain Email</div>
+                                    <a href="mailto:haokai.yang@yangindustries.link" class="text-white font-mono font-medium hover:text-brand-glow transition-colors">haokai.yang@yangindustries.link</a>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center space-x-4 p-4 rounded-xl bg-gray-900/60 border border-gray-800">
+                                <div class="w-10 h-10 rounded-lg bg-brand-500/10 flex items-center justify-center text-brand-glow">
+                                    <i data-lucide="globe" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <div class="text-xs text-gray-400">Official Website Domain</div>
+                                    <div class="text-white font-mono font-medium">https://yangindustries.link</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-6 bg-gray-900/80 border border-gray-800 rounded-2xl p-6 sm:p-8">
+                        <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                            <div>
+                                <label class="block text-xs font-medium text-gray-300 mb-1">Your Name / Organization</label>
+                                <input type="text" required placeholder="Jane Doe" class="w-full bg-darkbg border border-gray-700 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-500 transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-gray-300 mb-1">Contact Email</label>
+                                <input type="email" required placeholder="name@company.com" class="w-full bg-darkbg border border-gray-700 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-500 transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-gray-300 mb-1">Message</label>
+                                <textarea rows="3" required placeholder="How can Yang Industries assist you?" class="w-full bg-darkbg border border-gray-700 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-500 transition-colors"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-brand-600 hover:bg-brand-500 text-white font-semibold py-3 rounded-lg text-sm shadow-md transition-all flex items-center justify-center space-x-2">
+                                <i data-lucide="send" class="w-4 h-4"></i>
+                                <span>Send Message</span>
+                            </button>
+                            <div id="form-status" class="hidden text-xs text-center text-emerald-400 pt-2">
+                                Message acknowledged. We will respond via haokai.yang@yangindustries.link.
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-darkbg border-t border-gray-800/80 py-12 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6 text-sm text-gray-400">
+            <div class="flex items-center space-x-3">
+                <div class="w-7 h-7 rounded-lg bg-brand-600 flex items-center justify-center text-white font-bold text-xs">YI</div>
+                <span class="text-white font-semibold">Yang Industries</span>
+                <span class="text-gray-600">|</span>
+                <span>© 2026 Yang Industries. All rights reserved.</span>
+            </div>
+
+            <div class="flex items-center space-x-6 text-xs">
+                <a href="#privacy" onclick="showModal('privacy-modal')" class="hover:text-white transition-colors">Privacy Policy</a>
+                <a href="#terms" onclick="showModal('terms-modal')" class="hover:text-white transition-colors">Terms of Service</a>
+                <a href="mailto:haokai.yang@yangindustries.link" class="hover:text-white transition-colors">haokai.yang@yangindustries.link</a>
+            </div>
+        </div>
+    </footer>
+
+    <div id="privacy-modal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div class="bg-darkcard border border-gray-800 rounded-2xl max-w-xl w-full p-6 space-y-4 max-h-[80vh] overflow-y-auto">
+            <div class="flex justify-between items-center border-b border-gray-800 pb-3">
+                <h3 class="text-lg font-bold text-white">Privacy Policy</h3>
+                <button onclick="closeModal('privacy-modal')" class="text-gray-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
+            </div>
+            <div class="text-xs text-gray-300 space-y-3 leading-relaxed">
+                <p>Yang Industries respects your privacy. This website is a corporate portal and does not collect personal tracking cookies or sell user data to third parties.</p>
+                <p>Any information submitted via our official communication channels or contact email (haokai.yang@yangindustries.link) is strictly used for responding to business inquiries and software development collaboration.</p>
+            </div>
+            <div class="pt-2 text-right">
+                <button onclick="closeModal('privacy-modal')" class="bg-gray-800 hover:bg-gray-700 text-white text-xs px-4 py-2 rounded-lg">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="terms-modal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div class="bg-darkcard border border-gray-800 rounded-2xl max-w-xl w-full p-6 space-y-4 max-h-[80vh] overflow-y-auto">
+            <div class="flex justify-between items-center border-b border-gray-800 pb-3">
+                <h3 class="text-lg font-bold text-white">Terms of Service</h3>
+                <button onclick="closeModal('terms-modal')" class="text-gray-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
+            </div>
+            <div class="text-xs text-gray-300 space-y-3 leading-relaxed">
+                <p>All software, hardware specifications, and branding displayed on this website are the property of Yang Industries.</p>
+                <p>Unauthorized duplication or misrepresentation of Yang Industries products, software binaries, or domain materials is prohibited.</p>
+            </div>
+            <div class="pt-2 text-right">
+                <button onclick="closeModal('terms-modal')" class="bg-gray-800 hover:bg-gray-700 text-white text-xs px-4 py-2 rounded-lg">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const status = document.getElementById('form-status');
+            status.classList.remove('hidden');
+            e.target.reset();
+            setTimeout(() => {
+                status.classList.add('hidden');
+            }, 6000);
+        }
+
+        function showModal(id) {
+            const modal = document.getElementById(id);
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeModal(id) {
+            const modal = document.getElementById(id);
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+        }
+    </script>
 </body>
 </html>
